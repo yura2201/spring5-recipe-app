@@ -3,6 +3,8 @@ package guru.springframework.spring5recipeapp.domain;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,6 +38,9 @@ public class Recipe {
   private String directions;
   @Lob
   private Byte[] image;
+  @Enumerated(value = EnumType.STRING)
+  private Difficulty difficulty;
+
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
   private Set<Ingredient> ingredients;
   @OneToOne(cascade = CascadeType.ALL)
